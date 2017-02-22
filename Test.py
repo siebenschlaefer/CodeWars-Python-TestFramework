@@ -15,11 +15,11 @@ class Test(object):
         self.start = datetime.now()
 
     def describe(self, msg):
-        print msg
+        print(msg)
         self.desc = msg
 
     def it(self, msg):
-        print msg
+        print(msg)
         self.itmsg = msg
 
     def _assert(self, p, actual, expected, msg):
@@ -48,26 +48,26 @@ class Test(object):
         self._assert(be, b, None, msg)
 
     def _error(self, msg, expected, actual):
-        print u"*** ERROR: {}".format(msg.format(actual, expected))
+        print(u"*** ERROR: {}".format(msg.format(actual, expected)))
         self.failures += 1
 
     def _success(self):
-        print "Test Passed"
+        print("Test Passed")
         self.successes += 1
 
     def report(self):
         end = datetime.now()
-        print u"\nTest run complete"
-        print u"Passed: {}".format(self.successes)
-        print u"Failed: {}".format(self.failures)
-        print u"Total:  {}".format(self.successes + self.failures)
+        print(u"\nTest run complete")
+        print(u"Passed: {}".format(self.successes))
+        print(u"Failed: {}".format(self.failures))
+        print(u"Total:  {}".format(self.successes + self.failures))
 
         delta = end - self.start
-        print u"Process took {:,}ms to complete".format((delta.microseconds + 1000000 * delta.seconds) // 1000)
+        print(u"Process took {:,}ms to complete".format((delta.microseconds + 1000000 * delta.seconds) // 1000))
         if self.failures == 0:
-            print u"Happy Days!"
+            print(u"Happy Days!")
         else:
-            print u"Better luck next time!"
+            print(u"Better luck next time!")
 
 test = Test()
 atexit.register(test.report)
